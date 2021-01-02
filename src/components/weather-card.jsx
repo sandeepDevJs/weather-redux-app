@@ -26,7 +26,6 @@ class WeatherCard extends React.Component{
     }
 
     render(){
-        console.log(this.props.latlog)
         return (
             <div className="w-card">
     
