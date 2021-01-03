@@ -1,7 +1,7 @@
 # About 
 
-## This is a Weather app that tells about weather according to user's locations
-## Weather Data is received using 'open Weather Map API'
+This is a Weather app that tells about weather according to user's locations
+Weather Data is received using 'open Weather Map API'
 
 # Packeges! 
     - React, 
@@ -18,22 +18,22 @@ hit 'npm start!!'
 
 # SnapShots!
 
-## Geo Location Access
+Geo Location Access
 ![](app_images/access.png)
 
-## Home
+Home
 ![](app_images/home.png)
 
-## Search City
+Search City
 ![](app_images/search.png)
 
-## About Page
+About Page
 ![](app_images/about.png)
 
 # Erro Handling
 
-## Geo Location Denied
+Geo Location Denied
 ![](app_images/denied.png)
 
-## City Not Found
+City Not Found
 ![](app_images/notFound.png)
