@@ -1,5 +1,11 @@
-import { createStore, applyMiddleware } from "redux"
-import { fetchLotLogReducer } from "../reducers";
+import { createStore, applyMiddleware, combineReducers } from "redux"
+import { fetchLotLogReducer, err404Handler, geoAccessErr } from "../reducers";
 import thunk from "redux-thunk";
 
-export default createStore(fetchLotLogReducer, applyMiddleware(thunk))
+let rootReducer = combineReducers({
+    weatherData: fetchLotLogReducer,
+    err404: err404Handler,
+    geoAccessErr
+})
+
+export default createStore(rootReducer, applyMiddleware(thunk))

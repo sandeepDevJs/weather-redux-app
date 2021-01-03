@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from "react-redux"
-import {getLogLot} from "../actions/index";
+import {getLogLot, errHandler} from "../actions/index";
+import Err from "./fetchErr"
 
 class WeatherCard extends React.Component{
 
@@ -9,9 +10,18 @@ class WeatherCard extends React.Component{
     }   
 
     render(){
+        let CustomErr;
+        if (this.props.err404) {
+            CustomErr =  <Err/> 
+        }
+
+        if (this.props.geoErr) {
+            CustomErr =  <Err msg={this.props.geoErr.message}/> 
+        }
+        // console.log("wcad:",this.props.err404)
         return (
             <div className="w-card">
-    
+                { CustomErr }
                 <h2>{this.props.wData.city}</h2>
                 <h3>{this.props.wData.weather}<span>Wind {this.props.wData.wind}m/s</span></h3>
                 <br/>
@@ -31,9 +41,11 @@ class WeatherCard extends React.Component{
 
 const mapStateToProps = (state) =>{
     return {
-        wData: state
+        wData: state.weatherData,
+        err404: state.err404,
+        geoErr: state.geoAccessErr
     }
 }
 
-export default connect(mapStateToProps, {getLogLot})(WeatherCard)
+export default connect(mapStateToProps, {getLogLot, errHandler})(WeatherCard)
 
