@@ -4,35 +4,18 @@ import {getLogLot} from "../actions/index";
 
 class WeatherCard extends React.Component{
 
-    constructor(props){
-        super(props)
-        this.state = {
-            city : "",
-            weather: "",
-            temp:"",
-            wind:""
-        }
-    }
-
     componentDidMount(){
         this.props.getLogLot()
-        console.log("data", this.props.latlog)
-        this.setState({
-            city : this.props.latlog.name,
-            weather: this.props.latlog.weather[0].main,
-            temp: this.props.latlog.main.temp,
-            wind: this.props.latlog.wind.speed
-        })
-    }
+    }   
 
     render(){
         return (
             <div className="w-card">
     
-                <h2>{this.state.city}</h2>
-                <h3>{this.state.weather}<span>Wind {this.state.wind}m/s</span></h3>
+                <h2>{this.props.wData.city}</h2>
+                <h3>{this.props.wData.weather}<span>Wind {this.props.wData.wind}m/s</span></h3>
                 <br/>
-                <h1>{this.state.temp}°C</h1>
+                <h1>{this.props.wData.temp}°C</h1>
                 <div className="sky">
                     <div className="sun"></div>
                     <div className="cloud">
@@ -48,13 +31,9 @@ class WeatherCard extends React.Component{
 
 const mapStateToProps = (state) =>{
     return {
-        latlog: state
+        wData: state
     }
 }
 
 export default connect(mapStateToProps, {getLogLot})(WeatherCard)
 
-// window.navigator.geolocation.getCurrentPosition(
-//     position => this.setState({lat: position.coords.latitude }), 
-//     err => this.setState({errorMsg: err.message })
-// );

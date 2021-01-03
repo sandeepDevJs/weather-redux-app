@@ -5,10 +5,10 @@ import WeatherCard from './weather-card';
 
 export default function Container() {
     return (
-        <div>
+        <>
             <Nav/>
             <SearchBox/>
             <WeatherCard/>
-        </div>
+        </>
     )
 }
